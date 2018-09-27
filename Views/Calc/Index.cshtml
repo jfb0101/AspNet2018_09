@@ -1,0 +1,29 @@
+@model Sakila.Models.CalcViewModel
+
+<form method="post" asp-controller="Calc" asp-action="Index" >
+    <div class="form-group" >
+        <label>N1</label>
+        <input asp-for="N1" class="form-control" type="number"/>
+    </div>
+
+    <div class="form-group" >
+        <label>N2</label>
+        <input asp-for="N2" class="form-control" type="number"/>
+    </div>
+
+     <div class="form-group" >
+         <label>Operation</label>
+         <select asp-for="Operation" class="form-control" >
+             <option value="ADD">Add</option>
+             <option value="SUBTRACT">Subtract</option>
+             <option value="MULTIPLY">Multiply</option>
+             <option value="DIVIDE">Divide</option>
+         </select>
+     </div>
+
+        @if (Model != null) {
+            @Model.Result
+        }
+
+     <input type="submit" class="btn btn-primary" value="Do operation"/>
+</form>
