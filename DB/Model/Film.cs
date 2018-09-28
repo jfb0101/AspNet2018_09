@@ -8,8 +8,10 @@ namespace Sakila.DB.Model {
         [Column("film_id")]
         public int? Id {get;set;}
         [Column("title")]
+        
         public string Title {get;set;}
         [Column("description")]
+        [Required]
         public string Description {get;set;}
     }
 }

@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Sakila.DB;
 using Microsoft.EntityFrameworkCore;
+using Sakila.Service;
 
 namespace Sakila
 {
@@ -40,6 +41,8 @@ namespace Sakila
 
             services.AddDbContext<SakilaDbContext>(options => 
                 options.UseMySql(Configuration.GetConnectionString("sakila")));
+
+            services.AddScoped(typeof(FilmService));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
