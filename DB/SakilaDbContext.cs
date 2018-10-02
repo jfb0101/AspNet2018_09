@@ -6,6 +6,7 @@ namespace Sakila.DB {
 
         public SakilaDbContext(DbContextOptions options) : base(options){}
         public DbSet<Film> Films {get;set;}
+        public DbSet<Language> Languages {get;set;}
 
         
     }

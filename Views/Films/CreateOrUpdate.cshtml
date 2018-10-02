@@ -20,5 +20,10 @@
         </span>
     </div>
 
+    <div class="form-group">
+        <label>Language</label>
+        <select asp-for="LanguageId" asp-items="@(new SelectList(ViewBag.LanguageList,"Id","Name"));" ></select>
+    </div>
+
     <input type="submit" value="Save" class="btn btn-primary"/>
 </form>

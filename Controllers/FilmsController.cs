@@ -7,9 +7,11 @@ namespace Sakila.Controllers {
     public class FilmsController : Controller {
 
         private FilmService filmService;
+        private LanguageService languageService;
 
-        public FilmsController(FilmService filmService) {
+        public FilmsController(FilmService filmService, LanguageService languageService) {
             this.filmService = filmService;
+            this.languageService = languageService;
         }
         
         public IActionResult List() {
@@ -19,6 +21,7 @@ namespace Sakila.Controllers {
 
         [HttpGet]
         public IActionResult CreateOrUpdate(int? id) {
+            ViewBag.LanguageList = languageService.listAll();
             if (id != null) {
                 var film = filmService.findById((int)id);
                 return View(film);

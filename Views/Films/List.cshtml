@@ -9,6 +9,7 @@
         <tr>
             <th>ID</th>
             <th>Title</th>
+            <th>Language</th>
             <th></th>
         </tr>
     </thead>
@@ -20,6 +21,9 @@
                 </td>
                 <td>
                     @film.Title
+                </td>
+                <td>
+                   @(film.Language != null ? film.Language.Name : "")
                 </td>
                 <td>
                     <a asp-controller="Films" asp-action="CreateOrUpdate" asp-route-id="@film.Id">

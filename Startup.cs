@@ -43,6 +43,7 @@ namespace Sakila
                 options.UseMySql(Configuration.GetConnectionString("sakila")));
 
             services.AddScoped(typeof(FilmService));
+            services.AddScoped(typeof(LanguageService));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
