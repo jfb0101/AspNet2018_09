@@ -57,6 +57,21 @@ namespace Sakila.Service
             }
         }
 
+        public int numberOfAvailableInventory(int filmId) {
+            var inventories = from i in ctx.Inventories
+                                where !ctx.Rentals.Select(r => r.InventoryId).Contains(i.Id)
+                                && i.FilmId == filmId
+                                select i;
+            return inventories.Count();                              
+
+        }
+
+        public void foo() {
+            var films = from f in ctx.Films
+            where f.Title.Contains("bar")
+            select f;
+        }
+
 
     }
 }

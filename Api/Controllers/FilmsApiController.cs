@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
+using Sakila.Api.Model;
 using Sakila.DB.Model;
 using Sakila.Service;
 
@@ -13,8 +14,18 @@ namespace Sakila.Api.Controllers {
             this.filmService = filmService;
         }
 
-        public List<Film> listAll() {
-            return filmService.listAll();
+        public List<FilmApiModel> listAll() {
+            var filmsListDb = filmService.listAll();
+            List<FilmApiModel> filmsListApi = new List<FilmApiModel>();
+            foreach( var film in filmsListDb) {
+                filmsListApi.Add(new FilmApiModel(){
+                    Id = film.Id,
+                    Title = film.Title,
+                    Language = film.Language != null ? film.Language.Name : null,
+                    NumberOfAvailableInventory = filmService.numberOfAvailableInventory((int)film.Id)
+                });
+            }
+            return filmsListApi;
         }
 
         [HttpPost]
