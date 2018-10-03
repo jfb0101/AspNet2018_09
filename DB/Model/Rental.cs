@@ -10,5 +10,8 @@ namespace Sakila.DB.Model {
         [Column("inventory_id")]
         public int? InventoryId {get;set;}
         public virtual Inventory Inventory {get;set;}
+        [Column("customer_id")]
+        public int? CustomerId {get;set;}
+        public virtual Customer Customer {get;set;}
     }
 }

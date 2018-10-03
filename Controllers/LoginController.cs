@@ -20,9 +20,9 @@ namespace Sakila.Controllers {
             HttpContext.Session.SetString("FirstName",model.FirstName);
             HttpContext.Session.SetString("LastName",model.LastName);
             var customer = customerService.findByFirstNameAndLastName(model.FirstName,model.LastName);
-            HttpContext.Session.SetInt32("Id",(int)customer.Id);
+            HttpContext.Session.SetInt32("CustomerId",(int)customer.Id);
 
-            return RedirectToAction("List","Films");
+            return RedirectToAction("Index","Rental");
         }
 
         

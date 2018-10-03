@@ -66,10 +66,18 @@ namespace Sakila.Service
 
         }
 
-        public void foo() {
-            var films = from f in ctx.Films
-            where f.Title.Contains("bar")
-            select f;
+        public void doRental(int filmId,int customerId) {
+            Inventory availableInventory = (from i in ctx.Inventories where !ctx.Rentals.Select(r => r.InventoryId).Contains(i.Id)
+            && i.FilmId == filmId
+            select i).FirstOrDefault();
+
+            Rental rental = new Rental(){
+                InventoryId = availableInventory.Id,
+                CustomerId = customerId
+            };
+
+            ctx.Add(rental);
+            ctx.SaveChanges();
         }
 
 

@@ -1,0 +1,6 @@
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+
+<h2>
+ @HttpContextAccessor.HttpContext.Session.GetString("FirstName") @HttpContextAccessor.HttpContext.Session.GetString("LastName"), rent made successfully
+ </h2>

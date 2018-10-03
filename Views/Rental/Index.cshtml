@@ -1,0 +1,10 @@
+@model Sakila.Models.RentalViewModel
+
+<form method="post" asp-controller="Rental" asp-action="Index">
+    <div class="form-group">
+        <label>Select film</label>
+        <select class="form-control" asp-for="SelectedFilmId" asp-items="@(new SelectList(Model.Films,"Id","Title"));" ></select>
+    </div>
+
+    <input type="submit" class="btn btn-primary" value="Rent" />
+</form>
