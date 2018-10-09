@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Sakila.DB.Model;
 using Sakila.Service;
@@ -14,12 +15,14 @@ namespace Sakila.Controllers {
             this.languageService = languageService;
         }
         
+        [Authorize(Roles = "user")]
         public IActionResult List() {
             var filmsList = filmService.listAll();
             return View(filmsList);
         }
 
         [HttpGet]
+        [Authorize(Roles = "admin")]
         public IActionResult CreateOrUpdate(int? id) {
             ViewBag.LanguageList = languageService.listAll();
             if (id != null) {

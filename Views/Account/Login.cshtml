@@ -1,3 +1,15 @@
-<h1>
-    Login here
-</h1>
+@model Sakila.Models.LoginViewModel
+
+<form method="post" asp-controller="Account" asp-action="Login">
+    <div class="form-group">
+        <label>Email</label>
+        <input class="form-control" asp-for="Email"/>
+    </div>
+
+    <div class="form-group">
+        <label>Password</label>
+        <input class="form-control" asp-for="Password" type="password"/>
+    </div>
+
+    <input type="submit" value="Login" class="btn btn-primary"/>
+</form>

@@ -10,11 +10,13 @@ namespace Sakila.Controllers {
     public class AccountController : Controller {
 
         private UserManager<ApplicationUser> userManager;
+        private SignInManager<ApplicationUser> signInManager;
         private CustomerService customerService;
 
-        public AccountController(UserManager<ApplicationUser> userManager,CustomerService customerService) {
+        public AccountController(UserManager<ApplicationUser> userManager,CustomerService customerService,SignInManager<ApplicationUser> signInManager) {
             this.userManager = userManager;
             this.customerService = customerService;
+            this.signInManager = signInManager;
         }
 
         public IActionResult Register() {
@@ -42,6 +44,12 @@ namespace Sakila.Controllers {
 
         public IActionResult Login() {
             return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Login(LoginViewModel model) {
+            await signInManager.PasswordSignInAsync(model.Email,model.Password,true,false);
+            return RedirectToAction("List","Films");
         }
     }
 }
