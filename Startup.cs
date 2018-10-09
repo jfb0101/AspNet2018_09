@@ -12,6 +12,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Sakila.DB;
 using Microsoft.EntityFrameworkCore;
 using Sakila.Service;
+using Sakila.Security;
+using Microsoft.AspNetCore.Identity;
 
 namespace Sakila
 {
@@ -45,6 +47,8 @@ namespace Sakila
             services.AddScoped(typeof(CustomerService));
 
             services.AddSingleton<IHttpContextAccessor,HttpContextAccessor>();
+
+            configureIdentity(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -66,11 +70,27 @@ namespace Sakila
 
             app.UseSession();
 
+            app.UseIdentity();
+
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
+            });
+        }
+    
+        private void configureIdentity(IServiceCollection services) {
+            services.AddIdentity<ApplicationUser,ApplicationRole>()
+            .AddEntityFrameworkStores<SakilaDbContext>()
+            .AddDefaultTokenProviders();
+            services.Configure<IdentityOptions>(options => {
+                options.Password.RequireDigit = false;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequireLowercase = false;
+                options.User.RequireUniqueEmail = true;
+                
             });
         }
     }

@@ -17,5 +17,17 @@ namespace Sakila.Service {
         public Customer findByFirstNameAndLastName(string firstName, string lastName) {
             return (from c in ctx.Customers where c.FirstName == firstName && c.LastName == lastName select c).FirstOrDefault();
         }
+
+        public Customer save(Customer customer) {
+            if (customer.Id == null) {
+                ctx.Customers.Add(customer);
+            } else {
+                ctx.Customers.Update(customer);
+            }
+
+            ctx.SaveChanges();
+
+            return customer;
+        }
     }
 }

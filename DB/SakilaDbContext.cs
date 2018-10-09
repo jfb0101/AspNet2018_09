@@ -1,8 +1,10 @@
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Sakila.DB.Model;
+using Sakila.Security;
 
 namespace Sakila.DB {
-    public class SakilaDbContext : DbContext {
+    public class SakilaDbContext : IdentityDbContext<ApplicationUser,ApplicationRole,string> {
 
         public SakilaDbContext(DbContextOptions options) : base(options){}
         

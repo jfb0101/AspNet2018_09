@@ -11,5 +11,7 @@ namespace Sakila.DB.Model {
         public string FirstName {get;set;}
         [Column("last_name")]
         public string LastName {get;set;}
+        [Column("user_id")]
+        public string UserId {get;set;}
     }
 }
