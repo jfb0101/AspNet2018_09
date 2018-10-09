@@ -1,3 +1,16 @@
-<h1>
-    create or update roles
-</h1>
+@model Sakila.Admin.Models.CreateUpdateRoleViewModel
+
+<form method="post" asp-controller="Roles" asp-action="CreateOrUpdate" asp-area="Admin">
+    <div class="form-group">
+        <label>Name</label>
+        <input class="form-control" asp-for="Name" />
+    </div>
+
+    <input type="submit" value="Save" class="btn btn-primary"/>
+
+    @if(Model != null && Model.Created != null && (bool) Model.Created) {
+        <div class="alert alert-success">
+            Role created
+        </div>
+    }
+</form>
