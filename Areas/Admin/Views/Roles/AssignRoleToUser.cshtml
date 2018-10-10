@@ -1,0 +1,21 @@
+@model Sakila.Admin.Models.AssignRoleToUserViewModel
+
+<form method="post" asp-area="Admin" asp-controller="Roles" asp-action="AssignRoleToUser">
+    <div class="form-group">
+        <label>User</label>
+         <select class="form-control" asp-for="SelectedUserId" asp-items="@(new SelectList(Model.UserList,"Id","Email"));" ></select>
+    </div>
+
+    <div class="form-group">
+        <label>User</label>
+         <select class="form-control" asp-for="SelectedRoleId" asp-items="@(new SelectList(Model.RoleList,"Id","Name"));" ></select>
+    </div>
+
+    <input type="submit" value="Save" class="btn btn-primary"/>
+
+    @if(Model != null && Model.Assigned != null && (bool) Model.Assigned) {
+        <div class="alert alert-success">
+            Role assigned to user
+        </div>
+    }
+</form>
