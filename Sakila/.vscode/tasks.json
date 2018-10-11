@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/Sakila/Sakila.csproj"
+                "${workspaceFolder}/Sakila.csproj"
             ],
             "problemMatcher": "$msCompile"
         }
