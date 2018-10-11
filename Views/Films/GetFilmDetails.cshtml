@@ -1,0 +1,16 @@
+@model Sakila.DB.Model.Film
+
+@{
+    Layout = "";
+}
+
+<h3>Title</h3>
+@Model.Title
+
+<h3>Description</h3>
+@Model.Description
+
+<h3>Language</h3>
+@if(Model.Language != null) {
+    @Model.Language.Name
+}

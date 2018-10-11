@@ -15,14 +15,14 @@ namespace Sakila.Controllers {
             this.languageService = languageService;
         }
         
-        [Authorize(Roles = "user")]
+        
         public IActionResult List() {
             var filmsList = filmService.listAll();
             return View(filmsList);
         }
 
         [HttpGet]
-        [Authorize(Roles = "admin")]
+        
         public IActionResult CreateOrUpdate(int? id) {
             ViewBag.LanguageList = languageService.listAll();
             if (id != null) {
@@ -53,6 +53,11 @@ namespace Sakila.Controllers {
         public IActionResult Delete(int? id) {
             filmService.delete((int)id);
             return RedirectToAction("List");
+        }
+
+        public IActionResult GetFilmDetails(int filmId) {
+            var film = filmService.findById(filmId);
+            return View(film);
         }
     }
 }
