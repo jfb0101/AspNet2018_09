@@ -7,10 +7,10 @@ using Sakila.Service;
 namespace Sakila.Controllers {
     public class FilmsController : Controller {
 
-        private FilmService filmService;
-        private LanguageService languageService;
+        private IFilmService filmService;
+        private ILanguageService languageService;
 
-        public FilmsController(FilmService filmService, LanguageService languageService) {
+        public FilmsController(IFilmService filmService, ILanguageService languageService) {
             this.filmService = filmService;
             this.languageService = languageService;
         }

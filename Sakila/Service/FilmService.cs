@@ -7,7 +7,15 @@ using System;
 
 namespace Sakila.Service
 {
-    public class FilmService
+    public interface IFilmService {
+        Film findById(int id);
+        List<Film> listAll();
+        Film saveOrUpdate(Film film);
+        void delete(int filmId);
+        int numberOfAvailableInventory(int filmId);
+        void doRental(int filmId,int customerId);
+    }
+    public class FilmService : IFilmService
     {
         private SakilaDbContext ctx;
 

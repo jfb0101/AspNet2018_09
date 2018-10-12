@@ -1,2 +1,6 @@
 /bin/**
 /obj/**
+/Sakila/bin/**
+/Sakila/obj/**
+/SakilaTest/bin/**
+/SakilaTest/obj/**

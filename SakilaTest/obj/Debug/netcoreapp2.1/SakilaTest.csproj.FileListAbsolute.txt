@@ -12,3 +12,8 @@ c:\Users\Treinar\2018-09\SakilaProject\SakilaTest\obj\Debug\netcoreapp2.1\Sakila
 c:\Users\Treinar\2018-09\SakilaProject\SakilaTest\obj\Debug\netcoreapp2.1\SakilaTest.AssemblyInfo.cs
 c:\Users\Treinar\2018-09\SakilaProject\SakilaTest\obj\Debug\netcoreapp2.1\SakilaTest.dll
 c:\Users\Treinar\2018-09\SakilaProject\SakilaTest\obj\Debug\netcoreapp2.1\SakilaTest.pdb
+c:\Users\Treinar\2018-09\SakilaProject\SakilaTest\bin\Debug\netcoreapp2.1\Sakila.Views.dll
+c:\Users\Treinar\2018-09\SakilaProject\SakilaTest\bin\Debug\netcoreapp2.1\Sakila.Views.pdb
+c:\Users\Treinar\2018-09\SakilaProject\SakilaTest\bin\Debug\netcoreapp2.1\Sakila.dll
+c:\Users\Treinar\2018-09\SakilaProject\SakilaTest\bin\Debug\netcoreapp2.1\Sakila.pdb
+c:\Users\Treinar\2018-09\SakilaProject\SakilaTest\obj\Debug\netcoreapp2.1\SakilaTest.csproj.CopyComplete

@@ -4,7 +4,10 @@ using Sakila.DB.Model;
 using System.Linq;
 
 namespace Sakila.Service {
-    public class LanguageService {
+    public interface ILanguageService {
+         List<Language> listAll();
+    }
+    public class LanguageService : ILanguageService {
         private SakilaDbContext context;
 
         public LanguageService(SakilaDbContext context) {
