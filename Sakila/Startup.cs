@@ -14,6 +14,7 @@ using Microsoft.EntityFrameworkCore;
 using Sakila.Service;
 using Sakila.Security;
 using Microsoft.AspNetCore.Identity;
+using Sakila.Middleware;
 
 namespace Sakila
 {
@@ -68,9 +69,15 @@ namespace Sakila
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
+            
+
             app.UseSession();
 
             app.UseIdentity();
+
+             app.UseLogMiddleware(new LogMiddlewareOptions(){FilePath = "c:\\windows\\temp\\sakila.log"});
+
+             
 
             app.UseMvc(routes =>
             {
@@ -83,6 +90,8 @@ namespace Sakila
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+           
         }
     
         private void configureIdentity(IServiceCollection services) {
